@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">CartApp</string>
+    <string name="giris_yap">Giriş Yap</string>
+    <string name="alisveris_uygulamasi">Alışveriş Uygulaması</string>
+    <string name="urunadi">Ürün Adı</string>
+    <string name="urun_fiyati">Ürün Fiyatı</string>
+    <string name="kategoriler">Kategoriler</string>
+    <string name="kategori_ad">Kategori Adı</string>
+    <string name="toplam_tutar">Toplam Tutar</string>
+    <string name="satin_al">Satın Al</string>
+    <string name="sepet">Sepet</string>
+</resources>

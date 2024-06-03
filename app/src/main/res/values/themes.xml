@@ -1,0 +1,9 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Temel uygulama teması -->
+    <style name="Theme.CartApp" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Uygulama bar rengi -->
+        <item name="colorPrimary">@color/pink</item> <!-- Pembe -->
+        <item name="colorPrimaryVariant">@color/pink</item> <!-- Koyu pembe -->
+        <item name="colorOnPrimary">@color/white</item> <!-- Siyah -->
+    </style>
+</resources>
