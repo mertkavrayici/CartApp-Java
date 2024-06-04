@@ -22,11 +22,14 @@ import com.mertkavrayici.cartapp.MainActivity;
 import com.mertkavrayici.cartapp.MyApplication;
 import com.mertkavrayici.cartapp.R;
 import com.mertkavrayici.cartapp.categories_page.CategoriesActivity;
+import com.mertkavrayici.cartapp.helper.DatabaseHelper;
 import com.mertkavrayici.cartapp.models.Product;
 import com.mertkavrayici.cartapp.products_page.ProductAdapter;
 import com.mertkavrayici.cartapp.products_page.ProductsActivity;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class CartActivity extends AppCompatActivity {
@@ -54,10 +57,12 @@ public class CartActivity extends AppCompatActivity {
                 button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 AlertDialog.Builder builder = new AlertDialog.Builder(CartActivity.this);
                 builder.setMessage("Satın Alma İşlemi Gerçekleşti").setPositiveButton("Tamam", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+
                         dialog.dismiss();
                         ((MyApplication) getApplication()).clearCartList();
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -94,8 +99,5 @@ public class CartActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
+
 }

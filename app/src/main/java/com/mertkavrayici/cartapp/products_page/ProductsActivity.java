@@ -21,6 +21,7 @@ import com.mertkavrayici.cartapp.MyApplication;
 import com.mertkavrayici.cartapp.cart_page.CartActivity;
 import com.mertkavrayici.cartapp.categories_page.CategoriesActivity;
 import com.mertkavrayici.cartapp.categories_page.CategoryAdapter;
+import com.mertkavrayici.cartapp.helper.DatabaseHelper;
 import com.mertkavrayici.cartapp.models.Product;
 import com.mertkavrayici.cartapp.R;
 
@@ -32,6 +33,7 @@ public class ProductsActivity extends AppCompatActivity {
     private ProductAdapter productsAdapter;
     private List<Product> productList;
     private MyApplication myApplication;
+
 
 
 
@@ -59,8 +61,10 @@ public class ProductsActivity extends AppCompatActivity {
                 backPressed();
             }
         });
+        DatabaseHelper dbHelper = new DatabaseHelper(this);
+        // DB'de tuttuğum listeyi çektim.Eklediğim görselleri Database'e kaydedemedim boyuttan dolayı olduğunu düşünüyorum.Bu versiyonda ürün image'ları için temsili görsel olacak.
+        productList = dbHelper.getAllProducts().stream().filter(product -> product.getProductType()==productType).collect(Collectors.toList());
 
-        productList = ((MyApplication) getApplication()).getProductList().stream().filter(product -> product.getProductType() == productType).collect(Collectors.toList());
 
         recyclerView = findViewById(R.id.productsRecyclerView);
 
@@ -71,8 +75,7 @@ public class ProductsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), CartActivity.class);
-
-                startActivityForResult(intent, productType);
+                startActivity(intent);
             }
         });
 

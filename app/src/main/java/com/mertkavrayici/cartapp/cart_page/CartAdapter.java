@@ -43,7 +43,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     public void onBindViewHolder(@NonNull CartAdapter.CartViewHolder holder, int position) {
         Product product = cartList.get(position);
 
-        holder.cartImageView.setImageDrawable(new BitmapDrawable(context.getResources(), product.getImagePath()));
+        holder.cartImageView.setImageResource(R.drawable.mall);
         holder.textViewCartName.setText(product.getName());
         holder.textViewCartPrice.setText(String.valueOf("Fiyat :"+product.getPrice() +" TL"));
         holder.deleteButton.setOnClickListener(new View.OnClickListener() {

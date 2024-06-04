@@ -3,6 +3,7 @@ package com.mertkavrayici.cartapp.products_page;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -56,9 +57,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public void onBindViewHolder(@NonNull ProductAdapter.ProductViewHolder holder, int position) {
         Product product = productList.get(position);
 
-        holder.imageViewProduct.setImageDrawable(new BitmapDrawable(context.getResources(), product.getImagePath()));
+        holder.imageViewProduct.setImageResource(R.drawable.mall);
         holder.textViewProductName.setText(product.getName());
         holder.textViewProductPrice.setText(String.valueOf("Fiyat :"+product.getPrice() +" TL"));
+        holder.quantityText.setText(String.valueOf("Adet :"+product.getQuantity()));
 
 
 
@@ -97,6 +99,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
         TextView textView;
         TextView cartText;
+        TextView quantityText ;
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -105,20 +108,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             textViewProductPrice = itemView.findViewById(R.id.textViewProductPrice);
             imageButton =itemView.findViewById(R.id.add_button);
             cartText =itemView.findViewById(R.id.badgeTextView);
+            quantityText= itemView.findViewById(R.id.textViewProductQuantity);
             //itemView.setOnClickListener(this);
 
         }
 
-      /*  @Override
-        public void onClick(View v) {
-            int position = getAdapterPosition();
-            if (position != RecyclerView.NO_POSITION) {
-                Product clickedData = productList.get(position);
-                Intent intent = new Intent(context, ProductsActivity.class);
-                intent.putExtra("productType", clickedData.getProductType());
-                context.startActivity(intent);
-            }
-        }*/
     }
 
 

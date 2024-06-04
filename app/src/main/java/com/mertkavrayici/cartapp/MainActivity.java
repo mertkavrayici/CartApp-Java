@@ -12,6 +12,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.mertkavrayici.cartapp.categories_page.CategoriesActivity;
+import com.mertkavrayici.cartapp.helper.DatabaseHelper;
 import com.mertkavrayici.cartapp.models.Category;
 import com.mertkavrayici.cartapp.models.Product;
 
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private List<Category> categoryList;
+
     private List<Product> productList;
 
     @Override
@@ -27,19 +28,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        categoryList = new ArrayList<>();
-        categoryList.add(new Category("Pantolonlar", BitmapFactory.decodeResource(this.getResources(), R.drawable.panths),1));
-        categoryList.add(new Category("Ceketler",BitmapFactory.decodeResource(this.getResources(), R.drawable.jacket),2));
-        categoryList.add(new Category("Ayakkabılar",BitmapFactory.decodeResource(this.getResources(), R.drawable.shoes),3));
-        categoryList.add(new Category("Gömlekler",BitmapFactory.decodeResource(this.getResources(), R.drawable.skirts),4));
-        categoryList.add(new Category("Tişörtler",BitmapFactory.decodeResource(this.getResources(), R.drawable.tshirt),5));
-        categoryList.add(new Category("Aksesuarlar",BitmapFactory.decodeResource(this.getResources(), R.drawable.glass),6));
+
+
 
         TextView titleTextView = findViewById(R.id.titleTextView);
 
         ImageView imageView = findViewById(R.id.imageView);
 
         Button loginButton = findViewById(R.id.loginButton);
+        addProducts();// Database'e kayıt atıyorum
 
 
         findViewById(R.id.loginButton).setOnClickListener(new View.OnClickListener() {
@@ -51,8 +48,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
     }
-    public List<Category> getCategoryList(){
-        return categoryList;
+    public void addProducts(){
+        DatabaseHelper dbHelper = new DatabaseHelper(this);
+        productList= ((MyApplication) getApplication()).getProductList();
+        for(Product product : productList){
+            dbHelper.addProduct(product);
+        }
+
+
     }
 }

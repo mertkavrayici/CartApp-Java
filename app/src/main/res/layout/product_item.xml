@@ -7,6 +7,7 @@
     android:layout_margin="20dp"
     android:orientation="horizontal"
 
+
     >
 
     <ImageView
@@ -33,14 +34,27 @@
             android:textSize="16sp"
             android:textStyle="bold"
             android:padding="8dp" />
-
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
         <TextView
             android:text="@string/urun_fiyati"
             android:id="@+id/textViewProductPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="14sp"
+            android:padding="8dp"
+            android:layout_marginEnd="40dp"/>
+
+        <TextView
+            android:text="Ürün Adeti:"
+            android:id="@+id/textViewProductQuantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
             android:padding="8dp" />
+    </LinearLayout>
+
 
 
 
